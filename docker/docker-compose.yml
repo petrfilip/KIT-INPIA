@@ -1,0 +1,28 @@
+version: "3"
+services:
+  inpia-mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=docker
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=db_dev
+    command: '--sql_mode=""'
+
+  inpia-mongo:
+    image: mongo:4.2.3-bionic
+    tty: true
+    ports:
+      - 27017:27017
+
+  inpia-smtp:
+    image: rnwood/smtp4dev:v3
+    tty: true
+    ports:
+      - '3000:80'
+      - '2525:25'
+      - '14143:143'
+
+
